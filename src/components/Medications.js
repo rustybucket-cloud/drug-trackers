@@ -8,7 +8,7 @@ function Medications() {
             <div>
                 <ul>
                     {medicines.map(item => (
-                    <li>{item}</li>
+                    <li>{item.medicine}</li>
                     ))}          
                 </ul>
             </div>

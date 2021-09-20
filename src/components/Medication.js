@@ -1,0 +1,5 @@
+function Medication(props) {
+    return (
+        
+    );
+}
