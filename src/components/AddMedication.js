@@ -4,7 +4,7 @@ import { add } from "../actions";
 
 function AddMedication() {
     const [ medicine, setMedicine ] = useState('');
-    const [ timeBetween, setTimeBetween ] = useState(null);
+    const [ timeBetween, setTimeBetween ] = useState('');
     const [ genericName, setGenericName ] = useState('');
     const [ comments, setComments ] = useState('');
     const dispatch = useDispatch();
@@ -13,19 +13,23 @@ function AddMedication() {
         switch(target.id) {
             case 'name':
                 setMedicine(target.value);
+            break;
             case 'hours':
                 setTimeBetween(target.value);
+            break;
             case 'generic':
                 setGenericName(target.value);
+            break;
             case 'comments':
                 setComments(target.value);
+            break;
         }
     }
     const handleClick = () => {
         if (medicine !== '') {
             dispatch(add({medicine, timeBetween, genericName, comments}));
             setMedicine('');
-            setTimeBetween(null);
+            setTimeBetween('');
             setGenericName('');
             setComments('');
         }
@@ -40,7 +44,7 @@ function AddMedication() {
                         <input className="d-block" onChange={handleChange} id="name" value={medicine}/>
                     </label>
                     <label className="d-block">Time Between Doses
-                        <span className="d-block"><input type="number" onChange={handleChange} id="hours"/> Hours</span>
+                        <span className="d-block"><input type="number" onChange={handleChange} id="hours" value={timeBetween}/> Hours</span>
                     </label>
                     <label className="d-block">Take With Food?
                         <span className="d-block"><input type="radio" value="yes" name="with-food" /> Yes</span>
@@ -49,10 +53,10 @@ function AddMedication() {
                 </div>
                 <div className="col-md-3 col-sm-5">
                     <label className="d-block">Generic Name
-                        <input className="d-block" onChange={handleChange} id="generic" />
+                        <input className="d-block" onChange={handleChange} id="generic" value={genericName}/>
                     </label>
                     <label className="d-block">Comments
-                        <textarea className="d-block" onChange={handleChange} id="comments"></textarea>
+                        <textarea className="d-block" onChange={handleChange} id="comments" value={comments}></textarea>
                     </label>
                 </div>
             </div>
