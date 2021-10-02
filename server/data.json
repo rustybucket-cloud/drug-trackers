@@ -1,0 +1,10 @@
+{"medications": 
+    [
+        {
+            "name":"advil",
+            "time_between": "2",
+            "generic_name":"ibuprofin",
+            "comments": "for swelling, take with food"
+        }
+    ]
+}

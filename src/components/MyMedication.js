@@ -1,4 +1,4 @@
-import AddMedication from "./AddMedication";
+import AddMedication from "./add_medication/AddMedicationCC";
 import Medications from "./Medications";
 
 function MyMedication() {
