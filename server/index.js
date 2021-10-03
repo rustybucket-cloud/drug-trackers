@@ -2,6 +2,9 @@ const fs = require('fs');
 const data = fs.readFileSync('words.json');
 const medications = JSON.parse(data);
 
+const fb = initializeApp(firebaseConfig);
+const analytics = getAnalytics(fb);
+
 const express = require('express')
 const app = express()
 const port = 3000

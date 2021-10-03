@@ -9,7 +9,7 @@ function App() {
   const dispatch = useDispatch()
   useEffect( () => {
     console.log('yes')
-    fetch('./get_medications')
+    fetch('https://jacob-patton-drug-tracker-app.netlify.app/get_medications')
         .then(response => response.json())
         .then(data => {
             console.log(data)

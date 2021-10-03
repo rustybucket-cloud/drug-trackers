@@ -9,7 +9,7 @@ function Medications() {
     if (medicines !== []) {
         return (
             <div>
-                <ul className="row pl-0">
+                <ul className="row pl-0 col-12">
                     {medicines.map(item => (
                     <li className="col-4 list-unstyled mb-4"><Medication remove={remove} name={item.medicine} time={item.timeBetween} generic={item.genericName} comments={item.comments} /></li>
                     ))}          

@@ -17,10 +17,22 @@ body {
   font-family: 'Odile', sans-serif;
 }
 
-.active {
-  background-color: white;
-  border-radius: 10px 10px 0 0;
-  height: 100%;
+@media screen and (min-width: 767px) {
+  .active {
+    background-color: white;
+    border-radius: 10px 10px 0 0;
+    height: 100%;
+    padding-bottom: 1em !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .active {
+    color: #ED8461;
+    height: 100%;
+    border-bottom: 1px solid #ED8461;
+    max-width: 20em;
+  }
 }
 
 .x {
