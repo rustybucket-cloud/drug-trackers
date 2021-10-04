@@ -9,13 +9,13 @@ function App() {
   const dispatch = useDispatch()
   useEffect( () => {
     console.log('yes')
-    fetch('https://jacob-patton-drug-tracker-app.netlify.app/get_medications')
+    fetch('./get_medications')
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            data.medications.forEach( med => {
-              const { name, time_between, generic_name, comments } = med
-              dispatch(add({medicine: name, timeBetween: time_between, genericName:generic_name, comments}));
+            data.forEach( med => {
+              const { MED_NAME, WITH_FOOD, TIME_BETWEEN, GENERIC_NAME, COMMENTS } = med
+              dispatch(add({medicine: MED_NAME, withFood: WITH_FOOD, timeBetween: TIME_BETWEEN, genericName:GENERIC_NAME, comments: COMMENTS}));
             })
           })
           .catch(err => console.log(err))

@@ -2,8 +2,13 @@ const fs = require('fs');
 const data = fs.readFileSync('words.json');
 const medications = JSON.parse(data);
 
-const fb = initializeApp(firebaseConfig);
-const analytics = getAnalytics(fb);
+const mysql = require("mysql")
+const con = mysql.createConnection({
+    host: "sql3.freesqldatabase.com",
+    user: "sql3442068",
+    password: "UTBEtqNqxr",
+    database: 'sql3442068'
+});
 
 const express = require('express')
 const app = express()
@@ -16,8 +21,25 @@ app.use(express.static('../build'))
 
 app.get('/get_medications', getMedications)
 function getMedications(request, response) {
-    console.log('Get medicine request made')
-    response.send(medications);
+    console.log("hello");
+    function query(cb) {
+        const sql = 'SELECT * FROM MEDICATIONS'
+        let meds;
+        con.connect((err) => {
+            if (err) throw err;
+        });
+        con.query(sql, (err, result) => {
+            if (err) throw err;
+            const data = JSON.stringify(result)
+            console.log("Result: " + data);
+            return cb(data)
+        });
+    }
+    let data;
+    query( (meds) => {
+        console.log(meds);
+        response.send(meds);
+    });
 }
 
 app.get('/add_medication/:name/:time/:generic/:comments', addMedication);
